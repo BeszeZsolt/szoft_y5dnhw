@@ -6,14 +6,22 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    internal class KígyóElem : PictureBox
+    internal class Alma : PictureBox
     {
-        public static int Méret = 20;
-        public KígyóElem()
+        int méret = 20;
+        public Alma()
         {
             Width = KígyóElem.Méret;
             Height = KígyóElem.Méret;
             BackColor = Color.Fuchsia;
+
+            Random rnd = new Random();
+            int x = méret * rnd.Next();
+            int y = méret * rnd.Next();
+
+            Top = y;
+            Left = x;
+            //nem tudom
         }
     }
 }

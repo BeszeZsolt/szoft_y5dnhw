@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace Snake
 {
     public partial class Form1 : Form
@@ -6,7 +8,9 @@ namespace Snake
         int fej_y = 100;
         int irány_x = 1;
         int irány_y = 0;
-        int Lszám = 0;
+        int lszám = 0;
+        int hossz = 10;
+        List<KígyóElem> kígyó = new List<KígyóElem>();
         public Form1()
         {
             InitializeComponent();
@@ -14,20 +18,44 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Lszám++;
-
+            lszám++;
             fej_x += irány_x * KígyóElem.Méret;
             fej_y += irány_y * KígyóElem.Méret;
+
+            foreach (object item in Controls)
+            {
+                if (item is KígyóElem)
+                {
+                    KígyóElem k = (KígyóElem)item;
+
+                    if (k.Top == fej_y && k.Left == fej_x)
+                    {
+                        timer1.Enabled = false;
+                        return;
+                    }
+                }
+            }
 
             KígyóElem ke = new KígyóElem();
             ke.Top = fej_y;
             ke.Left = fej_x;
+            kígyó.Add(ke);
             Controls.Add(ke);
+
+
+            if (Controls.Count > hossz)
+            {
+                KígyóElem levágandó = kígyó[0];
+                kígyó.RemoveAt(0);
+                Controls.Remove(levágandó);
+            }
+
+            if (lszám % 2 == 0) ke.BackColor = Color.Yellow;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
