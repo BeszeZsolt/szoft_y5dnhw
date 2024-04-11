@@ -10,8 +10,8 @@ namespace _0411
         public Form1()
         {
             InitializeComponent();
-
-            dataGridView1.DataSource = countryList;
+            countryDataBindingSource.DataSource = countryList;
+            dataGridView1.DataSource = countryDataBindingSource;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,6 +25,27 @@ namespace _0411
                     countryList.Add(item);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            countryDataBindingSource.RemoveCurrent();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormCountryEdit fce = new FormCountryEdit();
+            fce.CountryData = countryDataBindingSource.Current as CountryData;
+            fce.Show();
+        }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            using (var writer = new StreamWriter("countries.csv"))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                // Write records to the CSV file
+                csv.WriteRecords(countryList);
+            };
         }
     }
 }

@@ -30,13 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            countryDataBindingSource = new BindingSource(components);
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             populationDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             areaInSquareKmDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            countryDataBindingSource = new BindingSource(components);
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)countryDataBindingSource).BeginInit();
             SuspendLayout();
@@ -53,6 +53,28 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(776, 213);
             dataGridView1.TabIndex = 0;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // populationDataGridViewTextBoxColumn
+            // 
+            populationDataGridViewTextBoxColumn.DataPropertyName = "Population";
+            populationDataGridViewTextBoxColumn.HeaderText = "Population";
+            populationDataGridViewTextBoxColumn.Name = "populationDataGridViewTextBoxColumn";
+            // 
+            // areaInSquareKmDataGridViewTextBoxColumn
+            // 
+            areaInSquareKmDataGridViewTextBoxColumn.DataPropertyName = "AreaInSquareKm";
+            areaInSquareKmDataGridViewTextBoxColumn.HeaderText = "AreaInSquareKm";
+            areaInSquareKmDataGridViewTextBoxColumn.Name = "areaInSquareKmDataGridViewTextBoxColumn";
+            // 
+            // countryDataBindingSource
+            // 
+            countryDataBindingSource.DataSource = typeof(CountryData);
             // 
             // button1
             // 
@@ -74,6 +96,7 @@
             button2.TabIndex = 2;
             button2.Text = "&Törlés";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -84,28 +107,7 @@
             button3.TabIndex = 3;
             button3.Text = "&Szerkesztés";
             button3.UseVisualStyleBackColor = true;
-            // 
-            // countryDataBindingSource
-            // 
-            countryDataBindingSource.DataSource = typeof(CountryData);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // populationDataGridViewTextBoxColumn
-            // 
-            populationDataGridViewTextBoxColumn.DataPropertyName = "Population";
-            populationDataGridViewTextBoxColumn.HeaderText = "Population";
-            populationDataGridViewTextBoxColumn.Name = "populationDataGridViewTextBoxColumn";
-            // 
-            // areaInSquareKmDataGridViewTextBoxColumn
-            // 
-            areaInSquareKmDataGridViewTextBoxColumn.DataPropertyName = "AreaInSquareKm";
-            areaInSquareKmDataGridViewTextBoxColumn.HeaderText = "AreaInSquareKm";
-            areaInSquareKmDataGridViewTextBoxColumn.Name = "areaInSquareKmDataGridViewTextBoxColumn";
+            button3.Click += button3_Click;
             // 
             // Form1
             // 
